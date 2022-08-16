@@ -9,15 +9,15 @@ import time as time
 
 class NaiveBayesNameClassifier:
 
-  def __init__(self, load_model=None, train_data='name_gender.csv', train_split=.8):
+  def __init__(self, model_to_load=None, train_data='name_gender.csv', train_split=.8):
     """ Initialize the model """
-    if load_model:
+    if model_to_load:
       # if a saved model is specified, load model from file
       try:
-        with open('saved_models/' + str(load_model) + '.pickle', 'rb') as handle:
+        with open('saved_models/' + str(model_to_load) + '.pickle', 'rb') as handle:
           self.clf_model, self.fitted_vectorizer = pickle.load(handle)
       except FileNotFoundError:
-        print('There is no such saved model as' + load_model + 
+        print('There is no such saved model as' + model_to_load + 
           '.\nTry NameClassifier(load_model=nbayes_name_gender_split80)')
       self.data = None
     else:

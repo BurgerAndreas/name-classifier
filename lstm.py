@@ -98,7 +98,7 @@ class LSTMNameClassifier:
       try:
         self.trained_lstm = load_model('saved_models/' + model_to_load + '.h5')
       except:
-        raise Exception('Try LSTMNameClassifier(model_to_load=\'lstm_name_gender\')')
+        raise Exception('Try LSTMNameClassifier(model_to_load=\'lstm_name_gender_split80\')')
     else:
       # train a new model from scratch
       # load and preprocess data 
@@ -125,7 +125,7 @@ class LSTMNameClassifier:
     # Predictions
     result = self.trained_lstm.predict(np.asarray(
         names_genders['name'].values.tolist())).squeeze(axis=1)
-    names_genders['Male or Female'] = [
+    names_genders['M/F'] = [
         'Male' if logit > 0.5 else 'Female' for logit in result
     ]
     names_genders['Probability'] = [
