@@ -1,28 +1,39 @@
 # Classify names by gender
 
-### Quick-start
-Run main.py
+## Quick-start
+### Using Docker
+$ docker build -f Dockerfile -t docker-clf-model .
+$ docker run docker-clf-model
 
-## Models
-I tested out two models, both available via main.py
+### Using Conda
+$ conda env create -f conda-clf-model.yml
+$ conda activate conda-clf-model
+$ python3 main.py
 
-### Naive Bayes
-The first is a Naive Bayes model.
-It's designed to be simple and fast,
-at the cost of being not very accurate.
+$ python3 web_app.py
+returns: Running on http://127.0.0.1:5000
+open http://127.0.0.1:5000 in your browser
 
-### LSTM
-The second is a bidirectional LSTM.
-It's designed to be a bit more sophisticated.
-It takes longer to train and uses hyperparameters.
 
-### requirements.txt
+## Explanation
+As often in real life, I only had a few hours for the project.
+So I looked into how others solved similar problems.
+
+My first attempt was simple and fast.
+It's a Naive Bayes model.
+It's not very accurate (75% test accuracy).
+(Try: main.py, Implementation: naive_bayes.py)
+
+My second attempt was a bit bit more sophisticated.
+It's a bidirectional LSTM.
+It takes a lot longer to train but is pretty accurate (> 75% test accuracy).
+(Try: main.py or web_app.py, Implementation: lstm.py)
+
+
+### requirements.txt and conda
 requirements.txt was generated using
 conda list -e > requirements.txt
 
-ml.yml was generated using
-conda env export > ml.yml
-
-A conda environment satisfying all requirements can be generated quickly using
-conda env create -f ml.yml
+conda-clf-model.yml was generated using
+conda env export > conda-clf-model.yml
 
