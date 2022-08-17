@@ -31,6 +31,10 @@ It's a bidirectional LSTM. \
 It takes a lot longer to train but is pretty accurate (> 90% test accuracy). \
 (Try: main.py or web_app.py, Implementation: lstm.py) 
 
+Before today I had never used Docker or Flask. \
+I wanted to show that one can learn the basics in one hour \
+(if one knows how to Stackoverflow and Medium).
+
 
 ### Requirements.txt and Conda
 requirements.txt was generated using \
